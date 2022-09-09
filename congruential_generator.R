@@ -5,5 +5,5 @@ congruent_modulo_RNG=function(seed,a,b,M,R) {
     randvector[i]=(a*seed+b)%%M
     seed=randvector[i]
   }
-  return(randvector/M)
+  return(randvector)
 }
