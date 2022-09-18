@@ -1,3 +1,4 @@
+# function to sample n times from any inv.func which is inverse of a CDF
 inversion = function(n,inv.func) {
   u = runif(n)
   inv.func(u)
