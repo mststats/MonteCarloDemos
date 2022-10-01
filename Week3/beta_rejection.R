@@ -1,8 +1,8 @@
 beta_rejection=function(n,a,b) {
   y=runif(n,0,1) # uniform proposal density
   M=dbeta(a/(a+b),a,b) # highest value f(x) can take
-  u=runif(n,0,M)  
-  accept=u < (dbeta(y,a,b))
+  u=runif(n,0,1)  
+  accept=u*M < (dbeta(y,a,b))
   x=y[accept]
   return(x) # accepted values only
 }
@@ -12,20 +12,21 @@ beta_rejection_simpler=function(n,a,b) {
   cdbeta=function(x,a,b) exp((a-1)*log(x) + (b-1)*log(1-x))
   y=runif(n,0,1) # uniform proposal density
   M=cdbeta(a/(a+b),a,b) # highest value cf(x) can take
-  u=runif(n,0,M)  
-  accept=u < (cdbeta(y,a,b))
+  u=runif(n,0,1)  
+  accept=u*M < (cdbeta(y,a,b))
   x=y[accept]
   return(x) # accepted values only
 }
 
 # envelope method with different beta as proposal density  (needs greater variance)
 beta_rejection_envelope=function(n,a,b) {
+  h=function(x) dbeta(x,a/2,b/2)
+  f=function(x) dbeta(x,a,b)
   # find the highest value f(x)/h(x) can take
-  M=optimize(function(x) dbeta(x,a,b)/dbeta(x,a/2,b/2),
-	     maximum=TRUE, interval=c(0,1))$object
+  M=optimize(function(x) f(x)/h(x), maximum=TRUE, interval=c(0,1))$object
   y=rbeta(n,a/2,b/2) # beta proposal density
-  u=runif(n,0,M) 
-  accept=u < (dbeta(y,a,b)/dbeta(y,a/2,b/2))
+  u=runif(n,0,1) 
+  accept=u < (f(y)/(M*h(y)))
   x=y[accept]
   return(x) # accepted values only
 }
