@@ -1,0 +1,10 @@
+R=1e4
+set.seed(12345)
+x.samps=rgamma(R,3,1)
+y.samps=rexp(R,4)
+z.samps=rchisq(R,4)
+q.samps=(x.samps+y.samps)/(z.samps+5)
+pdf(file="../../Lectures/figures/MC_sim_ex1.pdf")
+par(cex.axis=1.5,cex.lab=1.5,mar=c(5,5,0,0))
+hist(q.samps,freq=FALSE,xlab="Q",main="",30)
+dev.off()
