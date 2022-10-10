@@ -35,5 +35,5 @@ track_estimate=function(samps,col="black"){
   legend("topright", col=col, lty=c(1,2), lwd=2, cex=1.5, 
          legend=do.call('expression',list(
          bquote(paste(hat(theta)[n])),
-         bquote(paste(hat(theta)[n](f)," +/- 1.96 se",)))))
+         bquote(paste(hat(theta)[n]," +/- 1.96 se",)))))
 }

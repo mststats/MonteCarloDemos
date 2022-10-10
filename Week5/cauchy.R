@@ -5,4 +5,5 @@ importance_cauchy=function(R){
   weit=dcauchy(x)/g(x)
   phi=1
   return(phi*weit)
- }
+}
+
