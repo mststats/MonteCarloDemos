@@ -4,8 +4,8 @@ control_variates_x8=function(R){
   phi=function(x) x^8
   coefs=lm(phi(x.pilot)~0+h(x.pilot))$coef
   x=rnorm(R)
-  est=phi(x) - coefs[1]*h(x) 
-  return(est)
+  samps=phi(x) - coefs[1]*h(x) 
+  return(samps)
 }
 
 control_variates_pnorm=function(R,upp) {
@@ -15,6 +15,6 @@ control_variates_pnorm=function(R,upp) {
   phi=function(x) x>upp
   coefs=lm(phi(x.pilot)~0+h1(x.pilot)+h2(x.pilot))$coef
   x=rnorm(R)
-  est=phi(x) - coefs[1]*h1(x) - coefs[2]*h2(x)
-  return(est)
+  samps=phi(x) - coefs[1]*h1(x) - coefs[2]*h2(x)
+  return(samps)
 }
