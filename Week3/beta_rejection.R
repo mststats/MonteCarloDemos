@@ -1,6 +1,7 @@
 beta_rejection=function(n,a,b) {
   y=runif(n,0,1) # uniform proposal density
-  M=dbeta(a/(a+b),a,b) # highest value f(x) can take
+  # mode is (a-1)/(a+b-2) provided a,b>1
+  M=dbeta((a-1)/(a+b-2),a,b) # highest value f(x) can take
   u=runif(n,0,1)  
   accept=u*M < (dbeta(y,a,b))
   x=y[accept]
@@ -11,7 +12,8 @@ beta_rejection=function(n,a,b) {
 beta_rejection_simpler=function(n,a,b) {
   cdbeta=function(x,a,b) exp((a-1)*log(x) + (b-1)*log(1-x))
   y=runif(n,0,1) # uniform proposal density
-  M=cdbeta(a/(a+b),a,b) # highest value cf(x) can take
+  # mode is (a-1)/(a+b-2) provided a,b>1
+  M=cdbeta((a-1)/(a+b-2),a,b) # highest value f(x) can take
   u=runif(n,0,1)  
   accept=u*M < (cdbeta(y,a,b))
   x=y[accept]
