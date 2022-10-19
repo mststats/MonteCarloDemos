@@ -1,7 +1,8 @@
-# Normal CDF approximation using uniform density as importance function
+# Normal CDF approximation using inverted uniform density as importance function
 R=1e4
 y=runif(R,0,1/10)
-weit=dnorm(1/y)*10 # f(x)/g(x)
+x=1/y # f(y)=10 when y~[0,1/10] => g(x)=f(1/y)du/dx = 10/x^2
+weit=dnorm(x)/(10/x^2) # f(x)/g(x)
 estint=cumsum(weit)/1:R
 se=sqrt(cumsum((weit-estint)^2))/(1:R) # sample standard error
 plot(estint,t='l')
