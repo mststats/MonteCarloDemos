@@ -6,7 +6,7 @@ MH=function(x, init, iter) {
   q=function(t.gamma) 
     t.gamma^(sum(x)-1) * exp(-n*t.gamma - 0.25*log(t.gamma)^2) 
   j=function(p.gamma,c.gamma)
-    dgamma(p.gamma,(c.gamma^2)/propt.var,rate=c.gamma/prop.var)
+    dgamma(p.gamma,(c.gamma^2)/prop.var,rate=c.gamma/prop.var)
   gammat=rep(NA,iter)
   gammat[1]=init
   acc.count=0
