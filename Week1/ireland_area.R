@@ -1,6 +1,7 @@
 # estimate the area of an island
 require(maps)
 require(geosphere)
+require(mapproj)
 xrange=c(-11,-6)
 yrange=c(51,56)
 par(bty='n')

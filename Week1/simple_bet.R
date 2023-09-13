@@ -13,3 +13,6 @@ MC.b=sapply(1:R, count.heads) # sample from dbinom(x,4,prob=0.5)
 E.MC.b=mean(MC.b) # about 2
 
 # E[MC.a]<E[MC.b] and b wins about 43% of the time, versus 36% for a and 21% the draw
+mean(MC.b>MC.a) # 43%
+mean(MC.a>MC.b) # 36%
+mean(MC.a==MC.b) # 21%
