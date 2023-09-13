@@ -9,7 +9,7 @@ E.MC.a=mean(MC.a) # about 70/36
 # option b: toss a coin 4 times, count number of heads
 coin.f=function(i) sample(c("H","T"), replace=TRUE, 4)
 count.heads=function(i) sum(coin.f(i)=="H")
-MC.b=sapply(1:R, count.heads) # sample from dbinom(x,4,prob=0.5)
+MC.b=sapply(1:R, count.heads) # sample from rbinom(x,4,prob=0.5)
 E.MC.b=mean(MC.b) # about 2
 
 # E[MC.a]<E[MC.b] and b wins about 43% of the time, versus 36% for a and 21% the draw
