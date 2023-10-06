@@ -8,7 +8,7 @@ beta_rejection=function(n,a,b) {
   return(x) # accepted values only
 }
 
-# next version uses density up to constant 1/Beta(a,b; twice as fast!
+# next version uses density up to constant 1/Beta(a,b); twice as fast!
 beta_rejection_simpler=function(n,a,b) {
   cdbeta=function(x,a,b) exp((a-1)*log(x) + (b-1)*log(1-x))
   y=runif(n,0,1) # uniform proposal density
