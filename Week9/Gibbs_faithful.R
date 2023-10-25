@@ -1,9 +1,9 @@
 require(mvtnorm)
-# mixture model with 3 components, inference via Gibbs sampling
+# mixture model with 2 components, inference via Gibbs sampling
 data(faithful)
 x=faithful[,1:2]
 for (k in 1:2) 
-  x[,k]=scale(x[,k])
+  x[,k]=scale(x[,k]) # don't scale this!
 
 gibbs_mixture=function(x, M, iter, init=kmeans(x,M)$cluster) {
   n=nrow(x)
@@ -33,5 +33,5 @@ gibbs_mixture=function(x, M, iter, init=kmeans(x,M)$cluster) {
     }
   }
   close(pb)
-  return(list(mu,sigma,z))
+  return(list(mu=mu,sigma=sigma,z=z))
 }

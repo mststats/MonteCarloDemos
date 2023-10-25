@@ -3,7 +3,7 @@ importance_cauchy=function(R){
   # since G(x)=1-2/x we have G^-1(u) = 2/(1-u) or 2/u
   x=2/runif(R) # simulation of g(x) via method of inversion
   weit=dcauchy(x)/g(x)
-  phi=1
+  phi=1 # always one since x>2 for all x~g(x)
   return(phi*weit)
 }
 

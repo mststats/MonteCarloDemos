@@ -1,5 +1,5 @@
 require(mvtnorm)
-# mixture model with 3 components, inference via Gibbs sampling
+# mixture model with 3 components, inference via Metropolis-Hastings sampling
 data(faithful)
 x=faithful[,1:2]
 for (k in 1:2) 
@@ -55,5 +55,5 @@ MH_mixture=function(x, M, iter, prop.sd=c(1,1)) {
   }
   close(pb)
   cat("acceptance rate was ", 100*accept/iter, "%\n", sep="")
-  return(list(mu,sigma,z))
+  return(list(mu=mu,sigma=sigma,z=z))
 }
