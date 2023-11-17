@@ -7,7 +7,7 @@ hval=hcur=h(x)
 diff=iter=1
 while (diff>1e-4) {
   scale=sqrt(temp(iter))
-  prop=x[iter]+runif(1,-1,1)*scale
+  prop=x[iter]+runif(1,-1,1)*scale # range of x is [0,1] so use uniform proposals 
   if ((prop>1) || (prop<0) || (log(runif(1))*temp(iter)>h(prop)-hcur))
     prop=x[iter]
   x=c(x,prop)

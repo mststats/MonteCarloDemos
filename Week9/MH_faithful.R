@@ -23,7 +23,7 @@ MH_mixture=function(x, M, iter, prop.sd=c(1,1)) {
   prop.var=prop.sd[2]^2
   
   log.q=function(t.mu, t.sigma, t.z)
-    sum(replicate(n, function(j) dmvnorm(x[j,], t(t.mu[t.z[j],]), diag(t.sigma,d), log=TRUE))) - (n+1)*log(t.sigma)
+    sum(sapply(1:n, function(j) dmvnorm(x[j,], t(t.mu[t.z[j],]), diag(t.sigma,d), log=TRUE))) - (n+1)*log(t.sigma)
   log.J=function(p.sigma, c.sigma)
     dgamma(p.sigma,(c.sigma^2)/prop.var,rate=c.sigma/prop.var,log=TRUE) 
 
